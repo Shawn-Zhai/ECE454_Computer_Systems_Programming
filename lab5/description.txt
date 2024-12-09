@@ -1,0 +1,8 @@
+This implementation optimizes the sequential Game of Life by dividing the grid into 
+chunks of rows, each processed by a separate thread, enabling simultaneous computation 
+and faster execution on multi-core systems. Threads synchronize using a barrier to 
+ensure all updates for a generation are complete before swapping the input and output 
+boards. This prevents race conditions and maintains correctness. Boundary cells, which 
+require wrapping, are handled separately, reducing redundant calculations for inner 
+cells. Additionally, CPU affinity binds threads to specific cores, minimizing thread 
+migration and improving cache locality.
